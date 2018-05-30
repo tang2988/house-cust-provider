@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxh.fang.Dao.PayAccountFlowDao">
+
+	<insert id="addPayAccountFlow">
+		insert INTO
+		t_pay_account_flow(accountId,customerId,flowType,
+		tradeAmount,tradeDate,tradeTime,freezeAmount,unfreezeAmount,
+		inAmount,outAmount,usableBalance,
+		freezeBalance,bizType,bizTypeName,
+		bizId,bizDesc,tradeAccountId,tradeCustomerId,remark,versionNo,createTime)
+		VALUES(#{accountId},#{customerId},#{flowType},
+		#{tradeAmount},#{tradeDate},#{tradeTime},#{freezeAmount},#{unfreezeAmount},
+		#{inAmount},#{outAmount},#{usableBalance},
+		#{freezeBalance},#{bizType},
+		#{bizTypeName},
+		#{bizId},#{bizDesc},#{tradeAccountId},#{tradeCustomerId},#{remark},#{versionNo},#{createTime})
+	</insert>
+</mapper>

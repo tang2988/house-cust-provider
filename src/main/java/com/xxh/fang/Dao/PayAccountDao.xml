@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxh.fang.Dao.PayAccountDao">
+
+	<select id="findByAccountId" resultType="com.xxh.fang.entity.PayAccountVo">
+		select
+		accountId,customerId,accountStatus,usableBalance,freezeBalance,versionNo from
+		t_pay_account where accountId = #{accountId}
+
+	</select>
+	<update id="modifyTheStateOf">
+		update t_pay_account SET accountStatus
+		=#{accountStatus} where accountId =
+		#{accountId}
+	</update>
+
+	<update id="changeAvailableBalance">
+
+		update t_pay_account
+		set
+		usableBalance=#{usableBalance},versionNo=versionNo+1
+		where
+		accountId= #{accountId} and versionNo = #{versionNo}
+	</update>
+
+	<update id="loseMoney">
+		update t_pay_account set
+		usableBalance=#{usableBalance},versionNo=versionNo+1
+		where accountId= #{accountId} and versionNo = #{versionNo}
+
+	</update>
+	<update id="changeAvailableBalanceAndFreezeTheBalance">
+		update t_pay_account SET
+		usableBalance=usableBalance-#{usableBalance},freezeBalance=freezeBalance+#{freezeBalance}
+		where accountId = #{accountId}
+
+	</update>
+
+	<insert id="addPayAccount">
+		INSERT into
+		t_pay_account(accountId,customerId,usableBalance,freezeBalance)VALUES(#{accountId},#{customerId},#{usableBalance},#{freezeBalance})
+
+
+	</insert>
+
+</mapper>

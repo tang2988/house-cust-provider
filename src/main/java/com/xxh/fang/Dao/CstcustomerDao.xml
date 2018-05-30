@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxh.fang.Dao.CstcustomerDao">
+
+	<insert id="addCstcustormerPo" useGeneratedKeys="true"
+		keyProperty="customerId" parameterType="com.xxh.fang.entity.CstcustormerPo">
+
+		INSERT INTO t_cst_customer
+		(mobilePhone,mobilePhoneLocation,loginPassword,headerIconUrl,birthday,gender,registerTime,registerClientType,registerClientIp,authentic,authenticTime)
+		VALUES(#{mobilePhone},#{mobilePhoneLocation},#{loginPassword},#{headerIconUrl},#{birthday},#{gender},#{registerTime},#{registerClientType},#{registerClientIp},#{authentic},#{authenticTime})
+	</insert>
+
+	<select id="findByCstcustormerId" resultType="com.xxh.fang.entity.CstcustormerPo">
+		select
+		customerId,customerStatus,mobilePhone,mobilePhoneLocation,loginPassword,headerIconUrl,birthday,gender,registerTime,registerClientType,
+		registerClientIp,authentic,authenticTime,remark,versionNo,createTime
+		from t_cst_customer where
+		customerId=#{customerId}
+	</select>
+
+	<update id="changeLoginPassword">
+		update t_cst_customer SET
+		loginPassword=#{loginPassword},versionNo=versionNo+1 where
+		customerId=#{customerId} and versionNo=#{versionNo}
+
+
+	</update>
+
+	<update id="changeCustomerStatus">
+		update t_cst_customer set customerStatus
+		=#{customerStatus},versionNo=versionNo+1 where
+		customerId=#{customerId} and versionNo=#{versionNo}
+
+	</update>
+
+	<select id="cstCustomerLogin" resultType="com.xxh.fang.entity.CstcustormerPo">
+		SELECT customerId,
+		customerStatus,
+		mobilePhone,
+		mobilePhoneLocation,
+		loginPassword,
+		headerIconUrl,
+		birthday,
+		gender,
+		registerTime,
+		registerClientType,
+		registerClientIp,
+		authentic,
+		authenticTime,
+		remark,
+		versionNo,
+		createTime,
+		nickName,
+		describee FROM t_cst_customer WHERE mobilePhone =
+		#{mobilePhone} AND
+		loginPassword = #{loginPassword}
+
+	</select>
+
+	<update id="modifyUserProfile">
+		update t_cst_customer set
+		headerIconUrl=#{headerIconUrl},versionNo=versionNo+1 where customerId
+		=#{customerId} and versionNo=#{versionNo}
+
+	</update>
+
+	<update id="userAuthentication">
+		update t_cst_customer set authentic =#{authentic},
+		authenticTime =#{authenticTime},versionNo=versionNo+1 where customerId
+		=#{customerId} and versionNo=#{versionNo}
+	</update>
+
+
+	<update id="retrievePassword">
+		update t_cst_customer SET loginPassword
+		=#{loginPassword},versionNo=versionNo+1 where
+		mobilePhone=#{mobilePhone} and versionNo=#{versionNo}
+
+	</update>
+
+	<select id="findByMobilePhone" resultType="com.xxh.fang.entity.CstcustormerPo">
+		select
+		customerId,customerStatus,mobilePhone,mobilePhoneLocation,loginPassword,headerIconUrl,birthday,gender,registerTime,registerClientType,
+		registerClientIp,authentic,authenticTime,remark,versionNo,createTime
+		from t_cst_customer where
+		mobilePhone=#{mobilePhone}
+	</select>
+
+</mapper>
