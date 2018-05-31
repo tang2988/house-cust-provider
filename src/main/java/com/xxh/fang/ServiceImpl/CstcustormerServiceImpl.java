@@ -47,8 +47,10 @@ public class CstcustormerServiceImpl implements CstcustormerService {
 			resVo.setMsg("登录密码不能为空");
 			return resVo;
 		}
+		
 		CstcustormerPo cstcustormerpo = new CstcustormerPo();
 		BeanUtils.copyProperties(cstcustormervo, cstcustormerpo);
+		
 		int addCstcustormerPo = cstcustomerDao.addCstcustormerPo(cstcustormerpo);
 		if (addCstcustormerPo < 1) {
 			resVo.setSuccess(false);
@@ -57,7 +59,7 @@ public class CstcustormerServiceImpl implements CstcustormerService {
 		}
 		// 增加账户表
 		PayAccountVo account = new PayAccountVo();
-		account.setCustomerId(cstcustormervo.getCustomerId());
+		account.setCustomerId(cstcustormerpo.getCustomerId());
 		account.setAccountStatus(CustomerStatus.AccountStatusten);
 		account.setFreezeBalance(new BigDecimal(0.00));
 		account.setUsableBalance(new BigDecimal(0.00));
