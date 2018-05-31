@@ -34,7 +34,7 @@ public class CstcustomerServiceTest {
 	@Test
 	public void addCstcustormerPo() {
 		CstcustormerVo cstcustormerVo = new CstcustormerVo();
-		cstcustormerVo.setMobilePhone("12332894111");
+		cstcustormerVo.setMobilePhone("19932894111");
 		cstcustormerVo.setMobilePhoneLocation("广东");
 		cstcustormerVo.setLoginPassword("xiexionghui");
 		cstcustormerVo.setHeaderIconUrl(null);
