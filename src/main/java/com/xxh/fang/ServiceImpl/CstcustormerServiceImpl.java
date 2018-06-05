@@ -165,7 +165,7 @@ public class CstcustormerServiceImpl implements CstcustormerService {
 		CstcustormerPo cstcustormerpo = new CstcustormerPo();
 		BeanUtils.copyProperties(cstcustormervo, cstcustormerpo);
 		CstcustormerPo loginCustPo = cstcustomerDao.cstCustomerLogin(cstcustormerpo);
-
+	
 		if (loginCustPo != null) {
 
 			if (loginCustPo.getCustomerStatus().equals(CustomerStatus.AccountStatusten)) {
