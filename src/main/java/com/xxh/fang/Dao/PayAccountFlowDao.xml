@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xxh.fang.Dao.PayAccountFlowDao">
 
-	<insert id="addPayAccountFlow">
+	<insert id="addPayAccountFlow" useGeneratedKeys="true" keyProperty="flowId" parameterType="com.xxh.fang.entity.PayAccountFlowPo">
 		insert INTO
 		t_pay_account_flow(accountId,customerId,flowType,
 		tradeAmount,tradeDate,tradeTime,freezeAmount,unfreezeAmount,

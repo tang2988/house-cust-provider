@@ -38,7 +38,7 @@
 
 	</update>
 
-	<insert id="addPayAccount">
+	<insert id="addPayAccount" useGeneratedKeys="true" keyColumn="accountId" parameterType="com.xxh.fang.entity.PayAccountPo">
 		INSERT into
 		t_pay_account(accountId,customerId,usableBalance,freezeBalance)VALUES(#{accountId},#{customerId},#{usableBalance},#{freezeBalance})
 
